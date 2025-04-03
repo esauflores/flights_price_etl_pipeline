@@ -29,4 +29,4 @@ def save_json_to_gcs(json_data: dict, destination_blob_name: str) -> None:
         json_string = json.dumps(json_data)
         gcs_bucket.upload_from_string(json_string, destination_blob_name)
     except Exception as e:
-        raise Exception(f"Failed to save JSON data to GCS: {str(e)}")
+        raise Exception(f"Failed to save JSON data to GCS")
