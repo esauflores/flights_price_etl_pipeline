@@ -1,0 +1,29 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+
+# Ignore Git-related files
+.git/
+.gitignore
+
+# Ignore Docker-related files
+.dockerignore
+Dockerfile
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and other unnecessary files
+*.log
+
+
+# secrets
+secrets/
+
+# python version
+.python-version
