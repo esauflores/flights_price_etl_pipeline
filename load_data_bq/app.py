@@ -7,6 +7,7 @@ from google.cloud import bigquery, storage
 from google.cloud.exceptions import NotFound
 from flask import Flask, request
 from isodate import parse_duration
+from uuid import uuid4
 
 # # Load environment variables from .env file
 # from dotenv import load_dotenv
@@ -91,9 +92,7 @@ def load_json_to_bq(request):
         dataset_id = os.environ.get("BQ_DATASET")
         table_id = os.environ.get("BQ_TABLE")
         full_table = f"{project_id}.{dataset_id}.{table_id}"
-        temp_table = f"{table_id}_temp"
-
-        print(full_table)
+        temp_table = f"{table_id}_temp_{uuid4().hex}"
 
         # Read file from GCS
         bucket = storage_client.bucket(bucket_name)
