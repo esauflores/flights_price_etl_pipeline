@@ -87,6 +87,10 @@ def load_json_to_bq(request):
         file_name = request_json['name']
         logger.info(f"Received file: {file_name} from bucket: {bucket_name}")
 
+        if not file_name.startswith("raw_data/"):
+            logger.warning(f"File {file_name} does not start with 'raw_data/'. Ignoring.")
+            return "File not from raw_data folder", 200
+        
         # Get environment configs
         project_id = os.environ.get("GCP_PROJECT")
         dataset_id = os.environ.get("BQ_DATASET")
