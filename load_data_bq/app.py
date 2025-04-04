@@ -180,7 +180,7 @@ def load_json_to_bq(request):
 # Set up Flask app
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 def index():
     return load_json_to_bq(request)
 
