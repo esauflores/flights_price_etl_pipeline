@@ -22,7 +22,8 @@ def get_flights_amadeus(
         "destinationLocationCode": destination,
         "departureDate": departure_date,
         "adults": 1,
-        "currencyCode": currency_code
+        "currencyCode": currency_code,
+        "nonStop": True,
     }
 
     response = requests.get(url, headers=headers, params=params)

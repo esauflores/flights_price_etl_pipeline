@@ -1,0 +1,6 @@
+Flask
+gunicorn
+requests
+google-cloud-storage
+google-cloud-bigquery
+isodate
