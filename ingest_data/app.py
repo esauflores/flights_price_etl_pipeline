@@ -23,7 +23,7 @@ def app_get_flights_solo():
             origin=origin,
             destination=destination,
             departure_date=departure_date,
-            currency_code="USD",
+            currency_code="THB",
             save_to_gcs=True
         )
 
