@@ -1,3 +1,4 @@
+from locale import currency
 from flask import Flask, request, jsonify
 
 # from dotenv import load_dotenv
@@ -12,6 +13,7 @@ def app_get_flights_solo():
     origin = request.args.get('origin')
     destination = request.args.get('destination')
     departure_date = request.args.get('departure_date')
+    currency_code = request.args.get('currency_code', 'THB')
 
     # Validate query parameters
     if not all([origin, destination, departure_date]):
@@ -23,7 +25,7 @@ def app_get_flights_solo():
             origin=origin,
             destination=destination,
             departure_date=departure_date,
-            currency_code="THB",
+            currency_code=currency_code,
             save_to_gcs=True
         )
 
