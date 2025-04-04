@@ -10,6 +10,7 @@ def get_flights_amadeus(
     origin: str,
     destination: str,
     departure_date: str,
+    currency_code: str = "USD",
     save_to_gcs: bool = False,
 ):
     url = os.getenv("AMADEUS_FLIGHTS_OFFERS_URL")
@@ -20,7 +21,8 @@ def get_flights_amadeus(
         "originLocationCode": origin,
         "destinationLocationCode": destination,
         "departureDate": departure_date,
-        "adults": 1
+        "adults": 1,
+        "currencyCode": currency_code
     }
 
     response = requests.get(url, headers=headers, params=params)
@@ -29,7 +31,7 @@ def get_flights_amadeus(
         raise Exception(f"Failed to get flights data {response.json()}")
     
     if save_to_gcs:
-        id = f"{origin}_{destination}_{departure_date}"
+        id = f"{origin}_{destination}_{departure_date}_{currency_code}"
         filename = f"raw_data/flights_{id}.json"
         save_json_to_gcs(response.json(), filename)
 
